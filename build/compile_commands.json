@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/workspaces/DataflowEnergyPredictor/build",
+  "command": "/usr/bin/clang++  -I/workspaces/DataflowEnergyPredictor/include -isystem /usr/lib/llvm-15/include -isystem /usr/local/lib/phasar/deps/include -g -std=c++17 -o CMakeFiles/DataflowEnergyPredictor.dir/src/main.cpp.o -c /workspaces/DataflowEnergyPredictor/src/main.cpp",
+  "file": "/workspaces/DataflowEnergyPredictor/src/main.cpp"
+}
+]

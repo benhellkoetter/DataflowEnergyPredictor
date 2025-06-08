@@ -1,0 +1,6 @@
+/workspaces/DataflowEnergyPredictor/build/CMakeFiles/intrinsics_gen.dir
+/workspaces/DataflowEnergyPredictor/build/CMakeFiles/omp_gen.dir
+/workspaces/DataflowEnergyPredictor/build/CMakeFiles/acc_gen.dir
+/workspaces/DataflowEnergyPredictor/build/CMakeFiles/DataflowEnergyPredictor.dir
+/workspaces/DataflowEnergyPredictor/build/CMakeFiles/edit_cache.dir
+/workspaces/DataflowEnergyPredictor/build/CMakeFiles/rebuild_cache.dir
