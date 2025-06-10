@@ -8,6 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/workspaces/DataflowEnergyPredictor/src/EnergyModel.cpp" "CMakeFiles/DataflowEnergyPredictor.dir/src/EnergyModel.cpp.o" "gcc" "CMakeFiles/DataflowEnergyPredictor.dir/src/EnergyModel.cpp.o.d"
+  "/workspaces/DataflowEnergyPredictor/src/EnergyOfValueAnalysis.cpp" "CMakeFiles/DataflowEnergyPredictor.dir/src/EnergyOfValueAnalysis.cpp.o" "gcc" "CMakeFiles/DataflowEnergyPredictor.dir/src/EnergyOfValueAnalysis.cpp.o.d"
   "/workspaces/DataflowEnergyPredictor/src/main.cpp" "CMakeFiles/DataflowEnergyPredictor.dir/src/main.cpp.o" "gcc" "CMakeFiles/DataflowEnergyPredictor.dir/src/main.cpp.o.d"
   )
 

@@ -83,14 +83,46 @@ CMakeFiles/DataflowEnergyPredictor.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/DataflowEnergyPredictor.dir/src/main.cpp.s"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /workspaces/DataflowEnergyPredictor/src/main.cpp -o CMakeFiles/DataflowEnergyPredictor.dir/src/main.cpp.s
 
+CMakeFiles/DataflowEnergyPredictor.dir/src/EnergyOfValueAnalysis.cpp.o: CMakeFiles/DataflowEnergyPredictor.dir/flags.make
+CMakeFiles/DataflowEnergyPredictor.dir/src/EnergyOfValueAnalysis.cpp.o: /workspaces/DataflowEnergyPredictor/src/EnergyOfValueAnalysis.cpp
+CMakeFiles/DataflowEnergyPredictor.dir/src/EnergyOfValueAnalysis.cpp.o: CMakeFiles/DataflowEnergyPredictor.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspaces/DataflowEnergyPredictor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/DataflowEnergyPredictor.dir/src/EnergyOfValueAnalysis.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DataflowEnergyPredictor.dir/src/EnergyOfValueAnalysis.cpp.o -MF CMakeFiles/DataflowEnergyPredictor.dir/src/EnergyOfValueAnalysis.cpp.o.d -o CMakeFiles/DataflowEnergyPredictor.dir/src/EnergyOfValueAnalysis.cpp.o -c /workspaces/DataflowEnergyPredictor/src/EnergyOfValueAnalysis.cpp
+
+CMakeFiles/DataflowEnergyPredictor.dir/src/EnergyOfValueAnalysis.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/DataflowEnergyPredictor.dir/src/EnergyOfValueAnalysis.cpp.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /workspaces/DataflowEnergyPredictor/src/EnergyOfValueAnalysis.cpp > CMakeFiles/DataflowEnergyPredictor.dir/src/EnergyOfValueAnalysis.cpp.i
+
+CMakeFiles/DataflowEnergyPredictor.dir/src/EnergyOfValueAnalysis.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/DataflowEnergyPredictor.dir/src/EnergyOfValueAnalysis.cpp.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /workspaces/DataflowEnergyPredictor/src/EnergyOfValueAnalysis.cpp -o CMakeFiles/DataflowEnergyPredictor.dir/src/EnergyOfValueAnalysis.cpp.s
+
+CMakeFiles/DataflowEnergyPredictor.dir/src/EnergyModel.cpp.o: CMakeFiles/DataflowEnergyPredictor.dir/flags.make
+CMakeFiles/DataflowEnergyPredictor.dir/src/EnergyModel.cpp.o: /workspaces/DataflowEnergyPredictor/src/EnergyModel.cpp
+CMakeFiles/DataflowEnergyPredictor.dir/src/EnergyModel.cpp.o: CMakeFiles/DataflowEnergyPredictor.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspaces/DataflowEnergyPredictor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/DataflowEnergyPredictor.dir/src/EnergyModel.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DataflowEnergyPredictor.dir/src/EnergyModel.cpp.o -MF CMakeFiles/DataflowEnergyPredictor.dir/src/EnergyModel.cpp.o.d -o CMakeFiles/DataflowEnergyPredictor.dir/src/EnergyModel.cpp.o -c /workspaces/DataflowEnergyPredictor/src/EnergyModel.cpp
+
+CMakeFiles/DataflowEnergyPredictor.dir/src/EnergyModel.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/DataflowEnergyPredictor.dir/src/EnergyModel.cpp.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /workspaces/DataflowEnergyPredictor/src/EnergyModel.cpp > CMakeFiles/DataflowEnergyPredictor.dir/src/EnergyModel.cpp.i
+
+CMakeFiles/DataflowEnergyPredictor.dir/src/EnergyModel.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/DataflowEnergyPredictor.dir/src/EnergyModel.cpp.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /workspaces/DataflowEnergyPredictor/src/EnergyModel.cpp -o CMakeFiles/DataflowEnergyPredictor.dir/src/EnergyModel.cpp.s
+
 # Object files for target DataflowEnergyPredictor
 DataflowEnergyPredictor_OBJECTS = \
-"CMakeFiles/DataflowEnergyPredictor.dir/src/main.cpp.o"
+"CMakeFiles/DataflowEnergyPredictor.dir/src/main.cpp.o" \
+"CMakeFiles/DataflowEnergyPredictor.dir/src/EnergyOfValueAnalysis.cpp.o" \
+"CMakeFiles/DataflowEnergyPredictor.dir/src/EnergyModel.cpp.o"
 
 # External object files for target DataflowEnergyPredictor
 DataflowEnergyPredictor_EXTERNAL_OBJECTS =
 
 DataflowEnergyPredictor: CMakeFiles/DataflowEnergyPredictor.dir/src/main.cpp.o
+DataflowEnergyPredictor: CMakeFiles/DataflowEnergyPredictor.dir/src/EnergyOfValueAnalysis.cpp.o
+DataflowEnergyPredictor: CMakeFiles/DataflowEnergyPredictor.dir/src/EnergyModel.cpp.o
 DataflowEnergyPredictor: CMakeFiles/DataflowEnergyPredictor.dir/build.make
 DataflowEnergyPredictor: /usr/local/lib/libphasar_llvm_ifdside.a
 DataflowEnergyPredictor: /usr/local/lib/libphasar_llvm.a
@@ -144,7 +176,7 @@ DataflowEnergyPredictor: /usr/lib/x86_64-linux-gnu/libz.so
 DataflowEnergyPredictor: /usr/lib/x86_64-linux-gnu/libtinfo.so
 DataflowEnergyPredictor: /usr/lib/llvm-15/lib/libLLVMDemangle.a
 DataflowEnergyPredictor: CMakeFiles/DataflowEnergyPredictor.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/workspaces/DataflowEnergyPredictor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable DataflowEnergyPredictor"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/workspaces/DataflowEnergyPredictor/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable DataflowEnergyPredictor"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/DataflowEnergyPredictor.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

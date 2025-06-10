@@ -162,12 +162,12 @@ CMakeFiles/acc_gen.dir/clean:
 CMakeFiles/DataflowEnergyPredictor.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/DataflowEnergyPredictor.dir/build.make CMakeFiles/DataflowEnergyPredictor.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/DataflowEnergyPredictor.dir/build.make CMakeFiles/DataflowEnergyPredictor.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/workspaces/DataflowEnergyPredictor/build/CMakeFiles --progress-num=1,2 "Built target DataflowEnergyPredictor"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/workspaces/DataflowEnergyPredictor/build/CMakeFiles --progress-num=1,2,3,4 "Built target DataflowEnergyPredictor"
 .PHONY : CMakeFiles/DataflowEnergyPredictor.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/DataflowEnergyPredictor.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /workspaces/DataflowEnergyPredictor/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /workspaces/DataflowEnergyPredictor/build/CMakeFiles 4
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/DataflowEnergyPredictor.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /workspaces/DataflowEnergyPredictor/build/CMakeFiles 0
 .PHONY : CMakeFiles/DataflowEnergyPredictor.dir/rule

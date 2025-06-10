@@ -1,4 +1,8 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/DataflowEnergyPredictor.dir/src/EnergyModel.cpp.o"
+  "CMakeFiles/DataflowEnergyPredictor.dir/src/EnergyModel.cpp.o.d"
+  "CMakeFiles/DataflowEnergyPredictor.dir/src/EnergyOfValueAnalysis.cpp.o"
+  "CMakeFiles/DataflowEnergyPredictor.dir/src/EnergyOfValueAnalysis.cpp.o.d"
   "CMakeFiles/DataflowEnergyPredictor.dir/src/main.cpp.o"
   "CMakeFiles/DataflowEnergyPredictor.dir/src/main.cpp.o.d"
   "DataflowEnergyPredictor"

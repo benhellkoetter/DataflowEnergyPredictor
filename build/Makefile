@@ -168,6 +168,54 @@ DataflowEnergyPredictor/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/DataflowEnergyPredictor.dir/build.make CMakeFiles/DataflowEnergyPredictor.dir/build
 .PHONY : DataflowEnergyPredictor/fast
 
+src/EnergyModel.o: src/EnergyModel.cpp.o
+.PHONY : src/EnergyModel.o
+
+# target to build an object file
+src/EnergyModel.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DataflowEnergyPredictor.dir/build.make CMakeFiles/DataflowEnergyPredictor.dir/src/EnergyModel.cpp.o
+.PHONY : src/EnergyModel.cpp.o
+
+src/EnergyModel.i: src/EnergyModel.cpp.i
+.PHONY : src/EnergyModel.i
+
+# target to preprocess a source file
+src/EnergyModel.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DataflowEnergyPredictor.dir/build.make CMakeFiles/DataflowEnergyPredictor.dir/src/EnergyModel.cpp.i
+.PHONY : src/EnergyModel.cpp.i
+
+src/EnergyModel.s: src/EnergyModel.cpp.s
+.PHONY : src/EnergyModel.s
+
+# target to generate assembly for a file
+src/EnergyModel.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DataflowEnergyPredictor.dir/build.make CMakeFiles/DataflowEnergyPredictor.dir/src/EnergyModel.cpp.s
+.PHONY : src/EnergyModel.cpp.s
+
+src/EnergyOfValueAnalysis.o: src/EnergyOfValueAnalysis.cpp.o
+.PHONY : src/EnergyOfValueAnalysis.o
+
+# target to build an object file
+src/EnergyOfValueAnalysis.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DataflowEnergyPredictor.dir/build.make CMakeFiles/DataflowEnergyPredictor.dir/src/EnergyOfValueAnalysis.cpp.o
+.PHONY : src/EnergyOfValueAnalysis.cpp.o
+
+src/EnergyOfValueAnalysis.i: src/EnergyOfValueAnalysis.cpp.i
+.PHONY : src/EnergyOfValueAnalysis.i
+
+# target to preprocess a source file
+src/EnergyOfValueAnalysis.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DataflowEnergyPredictor.dir/build.make CMakeFiles/DataflowEnergyPredictor.dir/src/EnergyOfValueAnalysis.cpp.i
+.PHONY : src/EnergyOfValueAnalysis.cpp.i
+
+src/EnergyOfValueAnalysis.s: src/EnergyOfValueAnalysis.cpp.s
+.PHONY : src/EnergyOfValueAnalysis.s
+
+# target to generate assembly for a file
+src/EnergyOfValueAnalysis.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DataflowEnergyPredictor.dir/build.make CMakeFiles/DataflowEnergyPredictor.dir/src/EnergyOfValueAnalysis.cpp.s
+.PHONY : src/EnergyOfValueAnalysis.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -204,6 +252,12 @@ help:
 	@echo "... intrinsics_gen"
 	@echo "... omp_gen"
 	@echo "... DataflowEnergyPredictor"
+	@echo "... src/EnergyModel.o"
+	@echo "... src/EnergyModel.i"
+	@echo "... src/EnergyModel.s"
+	@echo "... src/EnergyOfValueAnalysis.o"
+	@echo "... src/EnergyOfValueAnalysis.i"
+	@echo "... src/EnergyOfValueAnalysis.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
