@@ -8,6 +8,7 @@
 #include "phasar/PhasarLLVM/Utils/LLVMShorthands.h"
 #include "llvm/IR/Instructions.h"
 #include <limits>
+#include <set>
 
 namespace dfep
 {
@@ -18,13 +19,25 @@ namespace dfep
     {
     }
 
-    double EnergyOfValueAnalysis::topElement() { return std::numeric_limits<double>::infinity(); }
-    double EnergyOfValueAnalysis::bottomElement() { return 0.0; }
-    double EnergyOfValueAnalysis::join(double Lhs, double Rhs) { return std::max(Lhs, Rhs); }
+    double EnergyOfValueAnalysis::topElement() { return 0.0; }
+
+    double EnergyOfValueAnalysis::bottomElement() { return std::numeric_limits<double>::infinity(); }
+
+    double EnergyOfValueAnalysis::join(double Lhs, double Rhs)
+    {
+        if (Lhs == topElement())
+            return Rhs;
+        if (Rhs == topElement())
+            return Lhs;
+        if (Lhs == bottomElement() || Rhs == bottomElement())
+            return bottomElement();
+
+        return std::max(Lhs, Rhs);
+    }
 
     psr::EdgeFunction<EnergyOfValueAnalysis::l_t> EnergyOfValueAnalysis::allTopFunction()
     {
-        return psr::AllTop<l_t>{};
+        return psr::AllTop<l_t>{topElement()};
     }
 
     EnergyOfValueAnalysis::InitialSeeds_t EnergyOfValueAnalysis::initialSeeds()
@@ -53,55 +66,159 @@ namespace dfep
 
             std::set<d_t> computeTargets(d_t Source) override
             {
-                if (Source.V == Inst)
+                std::set<d_t> Res;
+
+                if (!Inst->getType()->isVoidTy())
                 {
-                    return {};
+                    if (Source == ZeroValue)
+                    {
+                        Res.insert(d_t(Inst));
+                    }
+
+                    for (const auto &Operand : Inst->operands())
+                    {
+                        if (const auto *OpInst = llvm::dyn_cast<llvm::Instruction>(Operand))
+                        {
+                            if (Source.V == OpInst)
+                            {
+                                Res.insert(d_t(Inst));
+                                break;
+                            }
+                        }
+                    }
                 }
 
-                if (Source == ZeroValue && !Inst->getType()->isVoidTy())
+                if (Source.V != Inst)
                 {
-                    return {ZeroValue, d_t(Inst)};
+                    Res.insert(Source);
                 }
 
-                return {Source};
+                return Res;
             }
         };
-        return std::make_shared<NormalFlow>(CurrentInst, this->getZeroValue());
+        return std::make_shared<NormalFlow>(CurrentInst, getZeroValue());
     }
+
+    struct AddAllOperands
+    {
+        using l_t = double;
+        const llvm::Instruction *Inst;
+        const dfep::EnergyModel &Model;
+
+        l_t computeTarget(l_t Source) const
+        {
+            double sum = 0.0;
+            sum += Model.getInstructionEnergy(Inst);
+            for (auto &Op : Inst->operands())
+            {
+                sum += Source;
+            }
+            return sum;
+        }
+
+        bool operator==(const AddAllOperands &Other) const
+        {
+            return Inst == Other.Inst;
+        }
+
+        static psr::EdgeFunction<l_t>
+        compose(psr::EdgeFunctionRef<AddAllOperands> This,
+                const psr::EdgeFunction<l_t> &SecondFunction)
+        {
+            if (SecondFunction.dyn_cast<psr::EdgeIdentity<l_t>>())
+                return This;
+            if (SecondFunction.dyn_cast<AddAllOperands>())
+                return This;
+            return psr::AllTop<l_t>{0.0};
+        }
+
+        static psr::EdgeFunction<l_t>
+        join(psr::EdgeFunctionRef<AddAllOperands> This,
+             const psr::EdgeFunction<l_t> &Other)
+        {
+            if (Other.dyn_cast<AddAllOperands>())
+                return This;
+            return This;
+        }
+    };
 
     psr::EdgeFunction<EnergyOfValueAnalysis::l_t>
     EnergyOfValueAnalysis::getNormalEdgeFunction(n_t CurrentInst, d_t CurrentNode, n_t, d_t SuccessorNode)
     {
-        if (this->isZeroValue(CurrentNode) && SuccessorNode.V != nullptr)
+        struct AddConstant
         {
-            struct GenEdge
-            {
-                using l_t = double;
-                double EnergyToAssign;
-                l_t computeTarget(l_t /*Source*/) const { return EnergyToAssign; }
-                bool operator==(const GenEdge &Other) const { return EnergyToAssign == Other.EnergyToAssign; }
-                static psr::EdgeFunction<l_t> compose(psr::EdgeFunctionRef<GenEdge> This, const psr::EdgeFunction<l_t> &SecondFunction)
-                {
-                    if (llvm::isa<psr::EdgeIdentity<l_t>>(SecondFunction))
-                    {
-                        return This;
-                    }
-                    return SecondFunction;
-                }
-                static psr::EdgeFunction<l_t> join(psr::EdgeFunctionRef<GenEdge> This, const psr::EdgeFunction<l_t> &OtherFunction)
-                {
-                    if (const auto *Other = OtherFunction.dyn_cast<GenEdge>())
-                    {
-                        if (This->EnergyToAssign == Other->EnergyToAssign)
-                        {
-                            return GenEdge{This->EnergyToAssign};
-                        }
-                    }
-                    return psr::AllBottom<l_t>{};
-                }
-            };
+            using l_t = double;
+            double EnergyToAdd;
 
-            return GenEdge{model.getInstructionEnergy(CurrentInst)};
+            l_t computeTarget(l_t Source) const
+            {
+                if (Source == 0.0)
+                    return EnergyToAdd;
+                return Source + EnergyToAdd;
+            }
+
+            bool operator==(const AddConstant &Other) const
+            {
+                return std::abs(EnergyToAdd - Other.EnergyToAdd) < 1e-9;
+            }
+
+            static psr::EdgeFunction<l_t> compose(psr::EdgeFunctionRef<AddConstant> This, const psr::EdgeFunction<l_t> &SecondFunction)
+            {
+                if (SecondFunction.dyn_cast<psr::EdgeIdentity<l_t>>())
+                {
+                    return This;
+                }
+                if (const auto *Other = SecondFunction.dyn_cast<AddConstant>())
+                {
+                    return AddConstant{This->EnergyToAdd + Other->EnergyToAdd};
+                }
+                return psr::AllTop<l_t>{0.0};
+            }
+
+            static psr::EdgeFunction<l_t> join(psr::EdgeFunctionRef<AddConstant> This, const psr::EdgeFunction<l_t> &OtherFunction)
+            {
+                if (OtherFunction.dyn_cast<psr::EdgeIdentity<l_t>>())
+                {
+                    return This;
+                }
+                if (const auto *Other = OtherFunction.dyn_cast<AddConstant>())
+                {
+                    return AddConstant{std::max(This->EnergyToAdd, Other->EnergyToAdd)};
+                }
+                return psr::AllTop<l_t>{0.0};
+            }
+        };
+
+        if (this->isZeroValue(CurrentNode) && SuccessorNode.V == CurrentInst)
+        {
+            double baseCost = model.getInstructionEnergy(CurrentInst);
+            return AddConstant{baseCost};
+        }
+
+        if (CurrentNode.V != nullptr && SuccessorNode.V == CurrentInst)
+        {
+            for (const auto &Operand : CurrentInst->operands())
+            {
+                if (CurrentNode.V == Operand)
+                {
+                    if (auto *BinOp = llvm::dyn_cast<llvm::BinaryOperator>(CurrentInst))
+                    {
+                        double operationCost = model.getInstructionEnergy(BinOp);
+                        return AddConstant{operationCost};
+                    }
+                    double operationCost = model.getInstructionEnergy(CurrentInst);
+                    return AddConstant{operationCost};
+                }
+            }
+        }
+
+        if (auto *BinOp = llvm::dyn_cast<llvm::BinaryOperator>(CurrentInst))
+        {
+            if (BinOp->getOpcode() == llvm::Instruction::Add &&
+                SuccessorNode.V == CurrentInst)
+            {
+                return psr::EdgeFunction<l_t>{dfep::AddAllOperands{CurrentInst, model}};
+            }
         }
 
         return psr::EdgeIdentity<l_t>{};

@@ -10,6 +10,7 @@ namespace dfep
 {
     struct EnergyFact
     {
+        // Value: Register, Constant, Argument, etc.
         const llvm::Value *V;
 
         EnergyFact(const llvm::Value *v) : V(v) {}
