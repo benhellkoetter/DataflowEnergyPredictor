@@ -1,0 +1,19 @@
+{
+    "cpu": {
+        "name": "Intel Core i7-9750H",
+        "architecture": "x86_64",
+        "cores": 6
+    },
+    "unit": "mJ",
+    "startOfExecution": "2025-07-21T15:30:00Z",
+    "endOfExecution": "2025-07-21T15:32:45Z",
+    "duration": 165000,
+    "iterations": 1,
+    "profile": {
+        "MEMORY": 20.0,
+        "CALL": 4.0,
+        "PROGRAMFLOW": 2.0,
+        "DIVISION": 40.0,
+        "OTHER": 2.0
+    }
+}
