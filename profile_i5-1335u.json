@@ -1,0 +1,18 @@
+{
+    "cpu": {
+        "architecture": "6",
+        "cores": "12",
+        "name": "13th Gen Intel(R) Core(TM) i5-1335U"
+    },
+    "endOfExecution": "1754401617626459897",
+    "iterationsString": "8000",
+    "profile": {
+        "Call": 0.0052899703979492185,
+        "Division": 0.005019889831542969,
+        "Memory": 0.005040985107421875,
+        "Other": 0.005079948425292969,
+        "Programflow": 0.004998336791992188
+    },
+    "startOfExecution": "1754401503945976122",
+    "unit": "0.000061"
+}

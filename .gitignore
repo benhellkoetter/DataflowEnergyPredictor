@@ -1,0 +1,62 @@
+# #################### #
+#  Project Specific  #
+# #################### #
+
+# Local build output and dependency installations
+/build/
+phasar_install/
+
+# #################### #
+#   Build Artifacts  #
+# #################### #
+
+# CMake generated files
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+compile_commands.json
+
+# Compiled object files
+*.o
+*.lo
+*.slo
+*.obj
+
+# Compiled static libraries
+*.a
+*.lib
+*.la
+*.lai
+
+# Compiled dynamic libraries
+*.so
+*.dll
+*.dylib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# Precompiled Headers & Dependency files
+*.gch
+*.pch
+*.d
+
+# Fortran module files
+*.mod
+*.smod
+
+# #################### #
+#   Editor & OS Files  #
+# #################### #
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
