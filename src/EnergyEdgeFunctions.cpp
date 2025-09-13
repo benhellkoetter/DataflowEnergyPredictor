@@ -34,13 +34,11 @@ namespace dfep
     // EnergyEdgeFunction
     EnergyEdgeFunction::l_t EnergyEdgeFunction::computeTarget(l_t source) const noexcept
     {
-        l_t result = source + energy;
         llvm::errs() << "[DEFAULT::computeTarget] Inst=" << instToString(currentInstruction)
                      << " currentFact=" << factToString(currentFact)
                      << " successorFact=" << factToString(successorFact)
-                     << " energyAdded=" << energy
-                     << " -> res=" << result << "\n";
-        return result;
+                     << " energyAdded=" << energy << "\n";
+        return energy;
     }
 
     bool EnergyEdgeFunction::operator==(EnergyEdgeFunction const &other) const noexcept
@@ -100,14 +98,12 @@ namespace dfep
     // EnergyEdgeIdentityFunction
     EnergyEdgeIdentityFunction::l_t EnergyEdgeIdentityFunction::computeTarget(l_t source) const noexcept
     {
-        l_t result = source + energy;
         llvm::errs() << "[IDENT::computeTarget] Inst=" << instToString(currentInstruction)
                      << " currentFact=" << factToString(currentFact)
                      << " successorFact=" << factToString(successorFact)
                      << " source=" << source
-                     << " energyAdded=" << energy
-                     << " -> res=" << result << "\n";
-        return result;
+                     << " energyAdded=" << energy << "\n";
+        return energy;
     }
 
     bool EnergyEdgeIdentityFunction::operator==(EnergyEdgeIdentityFunction const &other) const noexcept
